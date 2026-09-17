@@ -175,7 +175,7 @@ jobs:
       - name: "📦 Cache & Install Dependencies | 缓存 & 安装构建依赖"
         uses: awalsh128/cache-apt-pkgs-action@latest 
         with: 
-          packages: python3 git curl ccache libelf-dev build-essential flex bison libssl-dev libncurses-dev liblz4-tool zlib1g-dev libxml2-utils rsync unzip gawk dos2unix
+          packages: python3 git curl ccache libelf-dev build-essential flex bison libssl-dev libncurses-dev liblz4-tool zlib1g-dev libxml2-utils rsync unzip gawk dos2unix wget
           execute_install_scripts: true
 
       # ====================== 缓存管理阶段 ======================
@@ -358,7 +358,8 @@ jobs:
           fi
 
           echo "📦 应用修复Unicode绕过补丁..."
-          patch -p1 < unicode_bypass_fix_6.1+.patch
+          wget https://github.com/ITxiao6666/Unicode_bypass_Fix/raw/refs/heads/main/unicode_bypass_fix2.patch
+          patch -p1 < unicode_bypass_fix2.patch
 
           echo "✅ 所有补丁应用完成"
 
