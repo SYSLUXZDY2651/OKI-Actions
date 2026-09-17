@@ -358,8 +358,9 @@ jobs:
           fi
 
           echo "📦 应用修复Unicode绕过补丁..."
-          wget https://github.com/ITxiao6666/Unicode_bypass_Fix/raw/refs/heads/main/unicode_bypass_fix2.patch
-          patch -p1 < unicode_bypass_fix2.patch
+          cd ~
+          cp kernel_patches/common/unicode_bypass_fix_6.1+.patch
+          patch -p1 < unicode_bypass_fix_6.1+.patch
 
           echo "✅ 所有补丁应用完成"
 
